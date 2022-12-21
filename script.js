@@ -1,0 +1,93 @@
+"use strict";
+
+// Random number that returns a number between 0 to 2.
+const getComputerResult = function () {
+  return Math.floor(Math.random() * 3);
+};
+
+// Prompt user to enter a number between 0 to 2.
+const getPlayerResult = function () {
+  let playerChoice = Number(
+    prompt(
+      "Welcome to Rock, Paper, Scissors!",
+      "Enter 0 = Rock, 1 = Paper, 2 = Scissors"
+    )
+  );
+  while (Number.isNaN(playerChoice) || playerChoice > 2 || playerChoice < 0) {
+    playerChoice = Number(
+      prompt(
+        "Error! Please try again!",
+        "Enter 0 = Rock, 1 = Paper, 2 = Scissors"
+      )
+    );
+  }
+  return playerChoice;
+};
+
+// return 0 if its a tie, 1 if the player won the round, 2 if the computer won the round.
+const playRound = function (getPlayerResult, getComputerResult) {
+  const rpsNumbs = {
+    0: "rock",
+    1: "paper",
+    2: "scissors",
+  };
+
+  // 0 = tie, 1 = win, 2 = lose.
+  const rpsArray = [
+    [0, 2, 1],
+    [1, 0, 2],
+    [2, 1, 0],
+  ];
+
+  if (rpsArray[getPlayerResult][getComputerResult] === 0) {
+    console.log(
+      `It's a tie! ${rpsNumbs[getPlayerResult]} doesn't beat ${rpsNumbs[getComputerResult]}!`
+    );
+    return 0;
+  } else if (rpsArray[getPlayerResult][getComputerResult] === 1) {
+    console.log(
+      `You won this round! ${rpsNumbs[getPlayerResult]} beats ${rpsNumbs[getComputerResult]}!`
+    );
+    return 1;
+  } else {
+    console.log(
+      `You lost this round! ${rpsNumbs[getComputerResult]} beats ${rpsNumbs[getPlayerResult]}!`
+    );
+    return 2;
+  }
+};
+
+// Play a game of five rounds keeping score of the player and computer. If it ties, then you restart the round.
+const rpsGame = function () {
+  let playerPoints = 0;
+  let computerPoints = 0;
+  let winCondition;
+
+  for (let i = 0; i < 5; i++) {
+    winCondition = playRound(getPlayerResult(), getComputerResult());
+
+    if (winCondition === 1) {
+      playerPoints++;
+    } else if (winCondition === 2) {
+      computerPoints++;
+    } else {
+      i--;
+    }
+  }
+
+  if (playerPoints > computerPoints) {
+    console.log(
+      `You won this game! Your score is ${playerPoints}:${computerPoints}`
+    );
+  } else if (playerPoints === computerPoints) {
+    console.log(
+      `You tied this game! Your score is ${playerPoints}:${computerPoints}`
+    );
+  } else {
+    console.log(
+      `You lost this game! Your score is ${playerPoints}:${computerPoints}`
+    );
+  }
+};
+
+rpsGame();
