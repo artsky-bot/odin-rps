@@ -1,5 +1,15 @@
 "use strict";
 
+// 0 = rock, 1 = paper, 2 = scissors
+const rpsNumbs = [`rock`, `paper`, `scissors`];
+
+// 0 = tie, 1 = win, 2 = lose.
+const rpsArray = [
+  [0, 2, 1],
+  [1, 0, 2],
+  [2, 1, 0],
+];
+
 // Random number that returns a number between 0 to 2.
 const getComputerResult = function () {
   return Math.floor(Math.random() * 3);
@@ -26,34 +36,21 @@ const getPlayerResult = function () {
 
 // return 0 if its a tie, 1 if the player won the round, 2 if the computer won the round.
 const playRound = function (getPlayerResult, getComputerResult) {
-  const rpsNumbs = {
-    0: "rock",
-    1: "paper",
-    2: "scissors",
-  };
-
-  // 0 = tie, 1 = win, 2 = lose.
-  const rpsArray = [
-    [0, 2, 1],
-    [1, 0, 2],
-    [2, 1, 0],
-  ];
-
   if (rpsArray[getPlayerResult][getComputerResult] === 0) {
     console.log(
       `It's a tie! ${rpsNumbs[getPlayerResult]} doesn't beat ${rpsNumbs[getComputerResult]}!`
     );
-    return 0;
+    return rpsArray[getPlayerResult][getComputerResult];
   } else if (rpsArray[getPlayerResult][getComputerResult] === 1) {
     console.log(
       `You won this round! ${rpsNumbs[getPlayerResult]} beats ${rpsNumbs[getComputerResult]}!`
     );
-    return 1;
+    return rpsArray[getPlayerResult][getComputerResult];
   } else {
     console.log(
       `You lost this round! ${rpsNumbs[getComputerResult]} beats ${rpsNumbs[getPlayerResult]}!`
     );
-    return 2;
+    return rpsArray[getPlayerResult][getComputerResult];
   }
 };
 
