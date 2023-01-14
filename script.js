@@ -1,5 +1,14 @@
 "use strict";
 
+const rockBtn = document.querySelector("#rock-button");
+const paperBtn = document.querySelector("#paper-button");
+const scissorBtn = document.querySelector("#scissor-button");
+
+
+
+
+
+
 // 0 = rock, 1 = paper, 2 = scissors
 const rpsNumbs = [`rock`, `paper`, `scissors`];
 
@@ -87,4 +96,4 @@ const rpsGame = function () {
   }
 };
 
-rpsGame();
+//rpsGame();

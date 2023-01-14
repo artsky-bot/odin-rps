@@ -1,0 +1,17 @@
+@import 'node_modules/modern-normalize/modern-normalize.css';
+
+html, body {
+    height: 100vh;
+}
+
+body {
+    background-attachment: fixed;
+    background: linear-gradient(45deg, #212036, #7874c4);
+}
+
+button {
+}
+
+.icon-size {
+    width: 100px;
+}
