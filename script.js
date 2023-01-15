@@ -24,25 +24,6 @@ const getComputerResult = function () {
   return Math.floor(Math.random() * 3);
 };
 
-// Prompt user to enter a number between 0 to 2.
-const getPlayerResult = function () {
-  let playerChoice = Number(
-    prompt(
-      "Welcome to Rock, Paper, Scissors!",
-      "Enter 0 = Rock, 1 = Paper, 2 = Scissors"
-    )
-  );
-  while (Number.isNaN(playerChoice) || playerChoice > 2 || playerChoice < 0) {
-    playerChoice = Number(
-      prompt(
-        "Error! Please try again!",
-        "Enter 0 = Rock, 1 = Paper, 2 = Scissors"
-      )
-    );
-  }
-  return playerChoice;
-};
-
 // return 0 if its a tie, 1 if the player won the round, 2 if the computer won the round.
 const playRound = function (getPlayerResult, getComputerResult) {
   if (rpsArray[getPlayerResult][getComputerResult] === 0) {
@@ -64,7 +45,7 @@ const playRound = function (getPlayerResult, getComputerResult) {
 };
 
 // Play a game of five rounds keeping score of the player and computer. If it ties, then you restart the round.
-const rpsGame = function () {
+/*const rpsGame = function () {
   let playerPoints = 0;
   let computerPoints = 0;
   let winCondition;
@@ -96,4 +77,10 @@ const rpsGame = function () {
   }
 };
 
-//rpsGame();
+rpsGame();*/
+
+
+rockBtn.onclick = () => playRound(0, getComputerResult());
+paperBtn.onclick = () => playRound(1, getComputerResult());
+scissorBtn.onclick = () => playRound(2, getComputerResult());
+
