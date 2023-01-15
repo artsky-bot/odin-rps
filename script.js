@@ -8,19 +8,19 @@ const outputRoundContainer = document.querySelector("#round-output");
 let outputResultText = document.createElement('p');
 let outputRoundText;
 
+// global variables for the rock paper scissor game. 
 let round = 0;
 let winCondition; 
 let playerPoints = 0; 
 let computerPoints = 0; 
 
+// Button functionality. rpsGame takes either 0, 1, 2 which respectively mean rock, paper, scissor. 
 rockBtn.addEventListener('click', () => {
   rpsGame(0);
 });
-
 paperBtn.addEventListener('click', () => {
   rpsGame(1);
 });
-
 scissorBtn.addEventListener('click', () => {
   rpsGame(2);
 });

@@ -7,6 +7,34 @@ html {
     background: linear-gradient(45deg, #212036, #7874c4);
 }
 
+h1 {
+    color: white; 
+}
+
+body { 
+    text-align: center;
+}
+
 .icon-size {
     width: 100px;
+    transition: 0.5s;
+}
+
+.icon-size:hover {
+    width: 110px; 
+}
+
+button {
+    background: transparent;
+    border: none; 
+}
+
+button:hover {
+    cursor: pointer; 
+}
+
+#rps-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
