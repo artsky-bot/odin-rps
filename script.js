@@ -45,14 +45,9 @@ const playRound = function (getPlayerResult, getComputerResult) {
 };
 
 // Play a game of five rounds keeping score of the player and computer. If it ties, then you restart the round.
-/*const rpsGame = function () {
-  let playerPoints = 0;
-  let computerPoints = 0;
-  let winCondition;
+const rpsGame = function (winCondition, count) {
 
-  for (let i = 0; i < 5; i++) {
-    winCondition = playRound(getPlayerResult(), getComputerResult());
-
+  if (count != 5) {
     if (winCondition === 1) {
       playerPoints++;
     } else if (winCondition === 2) {
@@ -77,10 +72,53 @@ const playRound = function (getPlayerResult, getComputerResult) {
   }
 };
 
-rpsGame();*/
+let round = 0;
+let winCondition; 
+let playerPoints = 0; 
+let computerPoints = 0; 
 
+rockBtn.addEventListener('click', () => {
+  if (round != 5) {
+    winCondition = playRound(0, getComputerResult());
 
-rockBtn.onclick = () => playRound(0, getComputerResult());
-paperBtn.onclick = () => playRound(1, getComputerResult());
-scissorBtn.onclick = () => playRound(2, getComputerResult());
+    if (winCondition === 1) {
+      playerPoints++;
+    } else if (winCondition === 2) {
+      computerPoints++;
+    } else {
+      i--;
+    }
+    round++;
+  }
+});
+
+paperBtn.addEventListener('click', () => {
+  if (round != 5) {
+    winCondition = playRound(1, getComputerResult());
+
+    if (winCondition === 1) {
+      playerPoints++;
+    } else if (winCondition === 2) {
+      computerPoints++;
+    } else {
+      i--;
+    }
+    round++;
+  }
+});
+
+scissorBtn.addEventListener('click', () => {
+  if (round != 5) {
+    winCondition = playRound(2, getComputerResult());
+
+    if (winCondition === 1) {
+      playerPoints++;
+    } else if (winCondition === 2) {
+      computerPoints++;
+    } else {
+      i--;
+    }
+    round++;
+  }
+});
 
