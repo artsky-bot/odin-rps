@@ -4,11 +4,6 @@ const rockBtn = document.querySelector("#rock-button");
 const paperBtn = document.querySelector("#paper-button");
 const scissorBtn = document.querySelector("#scissor-button");
 
-
-
-
-
-
 // 0 = rock, 1 = paper, 2 = scissors
 const rpsNumbs = [`rock`, `paper`, `scissors`];
 
@@ -45,30 +40,32 @@ const playRound = function (getPlayerResult, getComputerResult) {
 };
 
 // Play a game of five rounds keeping score of the player and computer. If it ties, then you restart the round.
-const rpsGame = function (winCondition, count) {
-
-  if (count != 5) {
+const rpsGame = function (buttonVal) {
+  if (round != 5) {
+    winCondition = playRound(buttonVal, getComputerResult());
     if (winCondition === 1) {
       playerPoints++;
     } else if (winCondition === 2) {
       computerPoints++;
     } else {
-      i--;
+      round--;
     }
-  }
-
-  if (playerPoints > computerPoints) {
-    console.log(
-      `You won this game! Your score is ${playerPoints}:${computerPoints}`
-    );
-  } else if (playerPoints === computerPoints) {
-    console.log(
-      `You tied this game! Your score is ${playerPoints}:${computerPoints}`
-    );
-  } else {
-    console.log(
-      `You lost this game! Your score is ${playerPoints}:${computerPoints}`
-    );
+    round++;
+    if (round == 5) {
+      if (playerPoints > computerPoints) {
+        console.log(
+          `You won this game! Your score is ${playerPoints}:${computerPoints}`
+        );
+      } else if (playerPoints === computerPoints) {
+        console.log(
+          `You tied this game! Your score is ${playerPoints}:${computerPoints}`
+        );
+      } else {
+        console.log(
+          `You lost this game! Your score is ${playerPoints}:${computerPoints}`
+        );
+      }
+    }
   }
 };
 
@@ -78,47 +75,14 @@ let playerPoints = 0;
 let computerPoints = 0; 
 
 rockBtn.addEventListener('click', () => {
-  if (round != 5) {
-    winCondition = playRound(0, getComputerResult());
-
-    if (winCondition === 1) {
-      playerPoints++;
-    } else if (winCondition === 2) {
-      computerPoints++;
-    } else {
-      i--;
-    }
-    round++;
-  }
+  rpsGame(0);
 });
 
 paperBtn.addEventListener('click', () => {
-  if (round != 5) {
-    winCondition = playRound(1, getComputerResult());
-
-    if (winCondition === 1) {
-      playerPoints++;
-    } else if (winCondition === 2) {
-      computerPoints++;
-    } else {
-      i--;
-    }
-    round++;
-  }
+  rpsGame(1);
 });
 
 scissorBtn.addEventListener('click', () => {
-  if (round != 5) {
-    winCondition = playRound(2, getComputerResult());
-
-    if (winCondition === 1) {
-      playerPoints++;
-    } else if (winCondition === 2) {
-      computerPoints++;
-    } else {
-      i--;
-    }
-    round++;
-  }
+  rpsGame(2);
 });
 
